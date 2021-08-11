@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import './question.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-      questionIndex = questionIndex + 1;
+      _questionIndex = _questionIndex + 1;
     });
     print('Answer chosen');
   }
@@ -26,15 +27,16 @@ class MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: Text('App Bar'),
-          backgroundColor: Colors.lightBlue,
+          backgroundColor: Colors.blueGrey,
         ),
         body: Column(
           children: [
-            Text(questions[questionIndex]),
+            // This widget made in question.dart
+            Question(questions[_questionIndex]),
             // answerQuestion is a pointer to the function named that
-            ElevatedButton(onPressed: answerQuestion, child: Text('Answer 1')),
-            ElevatedButton(onPressed: answerQuestion, child: Text('Answer 2')),
-            ElevatedButton(onPressed: answerQuestion, child: Text('Answer 3'))
+            ElevatedButton(onPressed: _answerQuestion, child: Text('Answer 1')),
+            ElevatedButton(onPressed: _answerQuestion, child: Text('Answer 2')),
+            ElevatedButton(onPressed: _answerQuestion, child: Text('Answer 3'))
           ],
         ),
       ),
